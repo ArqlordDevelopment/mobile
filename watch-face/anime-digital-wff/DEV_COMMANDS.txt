@@ -1,0 +1,106 @@
+ANIME DIGITAL FACES — DEV COMMANDS
+====================================
+
+GRADLE PATH
+-----------
+C:\Users\rocky\.gradle\wrapper\dists\gradle-8.13-bin\5xuhj0ry160q40clulazy9h7d\gradle-8.13\bin\gradle.bat
+
+ADB PATH
+--------
+%LOCALAPPDATA%\Android\Sdk\platform-tools\adb.exe
+
+PROJECT PATH
+------------
+C:\dev\mobile\watch-face\anime-digital-wff
+
+
+BUILD DEBUG APK
+---------------
+cd C:\dev\mobile\watch-face\anime-digital-wff
+gradlew assembleDebug
+
+
+BUILD RELEASE AAB (dex strip runs automatically)
+-------------------------------------------------
+cd C:\dev\mobile\watch-face\anime-digital-wff
+gradlew bundleRelease
+
+
+INSTALL ON EMULATOR
+-------------------
+%LOCALAPPDATA%\Android\Sdk\platform-tools\adb.exe -s emulator-5554 install --no-streaming -r app\build\outputs\apk\debug\app-debug.apk
+
+
+UNINSTALL FROM EMULATOR
+------------------------
+%LOCALAPPDATA%\Android\Sdk\platform-tools\adb.exe -s emulator-5554 uninstall com.lionor.animedigitalfaces
+
+
+TAKE SCREENSHOT FROM EMULATOR
+------------------------------
+%LOCALAPPDATA%\Android\Sdk\platform-tools\adb.exe -s emulator-5554 shell screencap /data/local/tmp/ss.png
+%LOCALAPPDATA%\Android\Sdk\platform-tools\adb.exe -s emulator-5554 pull /data/local/tmp/ss.png %USERPROFILE%\Downloads\ss.png
+
+
+CHECK LOGCAT FOR WFF ERRORS
+----------------------------
+%LOCALAPPDATA%\Android\Sdk\platform-tools\adb.exe -s emulator-5554 logcat -d 2>&1 | findstr /i "watchface wff format anime"
+
+
+CHECK INSTALLED PACKAGES
+-------------------------
+%LOCALAPPDATA%\Android\Sdk\platform-tools\adb.exe -s emulator-5554 shell pm list packages | findstr anime
+
+
+ANDROID STUDIO — RUN CONFIGURATION FIX (do once)
+-------------------------------------------------
+Run > Edit Configurations > app > Launch Options > set Launch = Nothing
+Then press green Play button to deploy and auto-select the watch face.
+
+
+SWAP BACKGROUND IMAGE (change active face)
+------------------------------------------
+Edit: app\src\main\res\raw\watchface.xml
+Change: <Image resource="face_01_sunset_boy" />
+To any of:
+  face_01_sunset_boy
+  face_02_twilight_girl
+  face_03_blue_lightning
+  face_04_red_flame
+  face_05_green_forest
+  face_06_purple_curse
+  face_07_gold_sky
+  face_08_cyber_neon
+Then rebuild and run.
+
+
+ADD A NEW FACE IMAGE
+--------------------
+1. Drop new PNG into: app\src\main\res\drawable-nodpi\
+2. Name it: face_09_yourname.png
+3. Reference it in watchface.xml: <Image resource="face_09_yourname" />
+
+
+SIGNING KEYSTORE
+----------------
+File:     C:\dev\mobile\watch-face\anime-digital-wff\anime-digital-release.jks
+Password: An1m3D1g1tal@2026!
+Alias:    animedigital
+
+
+PACKAGE NAME
+------------
+com.lionor.animedigitalfaces
+
+
+RELEASE AAB LOCATION
+--------------------
+app\build\outputs\bundle\release\app-release.aab
+
+
+PLAY STORE NOTES
+----------------
+- Upload AAB to Wear OS Production track (NOT phone track)
+- Setup > Advanced Settings > Form Factors > Add Wear OS first
+- Version code must be bumped in app\build.gradle.kts for each upload
+- Privacy page: run C:\dev\ai\android-release\upload_privacy.py

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WatchFace width="450" height="450" clipShape="CIRCLE">
+    <Scene>
+
+        <PartImage name="background" x="0" y="0" width="450" height="450">
+            <Image resource="face_01_sunset_boy" />
+        </PartImage>
+
+        <PartImage name="bottom_gradient" x="0" y="0" width="450" height="450">
+            <Image resource="bottom_gradient" />
+        </PartImage>
+
+        <!--
+          Layout: all text right-aligned to x=196 (x=68 + width=128).
+          AM/PM and date flush-right with the HH/MM block.
+          Oswald Regular font — file must be at res/font/oswald_regular.ttf
+          Drop shadow = duplicate offset 2px right + 2px down.
+        -->
+
+        <!--
+          All 4 text columns share the same bounding box: x=55, width=115 → right edge=170.
+          Oswald Regular at 88sp: a 2-digit number is ~95-105px wide, so right edge ~170 fits snug.
+          Numbers: LEFT aligned (start at x=55).
+          AM/PM + Date: RIGHT aligned (flush to right edge 170, matching where digits end).
+        -->
+
+        <!-- AM/PM — size 24, RIGHT-aligned to right edge of digits -->
+        <PartText name="ampm_shadow" x="57" y="71" width="115" height="30">
+            <Text align="RIGHT">
+                <Font family="oswald_regular" size="24" weight="NORMAL" color="#4B3328">
+                    <Template><![CDATA[%s]]><Parameter expression="[AMPM_STRING]" /></Template>
+                </Font>
+            </Text>
+        </PartText>
+        <PartText name="ampm_label" x="55" y="69" width="115" height="30">
+            <Text align="RIGHT">
+                <Font family="oswald_regular" size="24" weight="NORMAL" color="#F1D3AC">
+                    <Template><![CDATA[%s]]><Parameter expression="[AMPM_STRING]" /></Template>
+                </Font>
+            </Text>
+        </PartText>
+
+        <!-- Hour — RIGHT aligned to match PM and date -->
+        <PartText name="hour_shadow" x="57" y="88" width="115" height="100">
+            <Text align="RIGHT">
+                <Font family="oswald_regular" size="88" weight="NORMAL" color="#3F2A23">
+                    <Template><![CDATA[%02d]]><Parameter expression="[HOUR_1_12]" /></Template>
+                </Font>
+            </Text>
+        </PartText>
+        <PartText name="hour_text" x="55" y="84" width="115" height="100">
+            <Text align="RIGHT">
+                <Font family="oswald_regular" size="88" weight="NORMAL" color="#FFF1CF">
+                    <Template><![CDATA[%02d]]><Parameter expression="[HOUR_1_12]" /></Template>
+                </Font>
+            </Text>
+        </PartText>
+
+        <!-- Minute — RIGHT aligned -->
+        <PartText name="minute_shadow" x="57" y="168" width="115" height="100">
+            <Text align="RIGHT">
+                <Font family="oswald_regular" size="88" weight="NORMAL" color="#3F2A23">
+                    <Template><![CDATA[%02d]]><Parameter expression="[MINUTE]" /></Template>
+                </Font>
+            </Text>
+        </PartText>
+        <PartText name="minute_text" x="55" y="164" width="115" height="100">
+            <Text align="RIGHT">
+                <Font family="oswald_regular" size="88" weight="NORMAL" color="#FFF1CF">
+                    <Template><![CDATA[%02d]]><Parameter expression="[MINUTE]" /></Template>
+                </Font>
+            </Text>
+        </PartText>
+
+        <!-- Date — RIGHT-aligned to same right edge as digits -->
+        <PartText name="date_shadow" x="57" y="254" width="115" height="32">
+            <Text align="RIGHT">
+                <Font family="oswald_regular" size="18" weight="NORMAL" color="#4B3328">
+                    <Template><![CDATA[%s %s %d]]><Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[MONTH_S]" /><Parameter expression="[DAY]" /></Template>
+                </Font>
+            </Text>
+        </PartText>
+        <PartText name="date_text" x="55" y="252" width="115" height="32">
+            <Text align="RIGHT">
+                <Font family="oswald_regular" size="18" weight="NORMAL" color="#F1D8B8">
+                    <Template><![CDATA[%s %s %d]]><Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[MONTH_S]" /><Parameter expression="[DAY]" /></Template>
+                </Font>
+            </Text>
+        </PartText>
+
+        <!--
+          Eclipse metric badges — dark filled circle (#282828) with white 3px outline.
+          Each badge: eclipse circle behind icon, value text centered below.
+          Centers: battery=x79, steps=x225, weather=x369, all at y=343.
+        -->
+
+        <!--
+          2 eclipse badges — tighter spacing, centers at x=163 and x=287 (124px gap).
+          No fill — white outline ring only, background shows through.
+        -->
+
+        <!-- Battery eclipse — center x=163 -->
+        <PartDraw name="battery_eclipse" x="125" y="295" width="76" height="76">
+            <Ellipse x="0" y="0" width="76" height="76">
+                <Fill color="#282828" />
+                <Stroke color="#ffffff" thickness="3" />
+            </Ellipse>
+        </PartDraw>
+        <PartImage name="battery_icon" x="134" y="304" width="58" height="58">
+            <Image resource="icon_battery" />
+        </PartImage>
+        <PartText name="battery_shadow" x="117" y="382" width="96" height="26">
+            <Text align="CENTER">
+                <Font family="oswald_regular" size="20" weight="NORMAL" color="#3F2A23">
+                    <Template><![CDATA[%d%%]]><Parameter expression="[BATTERY_PERCENT]" /></Template>
+                </Font>
+            </Text>
+        </PartText>
+        <PartText name="battery_text" x="115" y="380" width="96" height="26">
+            <Text align="CENTER">
+                <Font family="oswald_regular" size="20" weight="NORMAL" color="#F5DEC0">
+                    <Template><![CDATA[%d%%]]><Parameter expression="[BATTERY_PERCENT]" /></Template>
+                </Font>
+            </Text>
+        </PartText>
+
+        <!-- Steps eclipse — center x=287 -->
+        <PartDraw name="steps_eclipse" x="249" y="295" width="76" height="76">
+            <Ellipse x="0" y="0" width="76" height="76">
+                <Stroke color="#ffffff" thickness="3" />
+            </Ellipse>
+        </PartDraw>
+        <PartImage name="steps_icon" x="258" y="304" width="58" height="58">
+            <Image resource="icon_steps" />
+        </PartImage>
+        <PartText name="steps_shadow" x="241" y="382" width="96" height="26">
+            <Text align="CENTER">
+                <Font family="oswald_regular" size="20" weight="NORMAL" color="#3F2A23">
+                    <Template><![CDATA[%d]]><Parameter expression="[STEP_COUNT]" /></Template>
+                </Font>
+            </Text>
+        </PartText>
+        <PartText name="steps_text" x="239" y="380" width="96" height="26">
+            <Text align="CENTER">
+                <Font family="oswald_regular" size="20" weight="NORMAL" color="#F5DEC0">
+                    <Template><![CDATA[%d]]><Parameter expression="[STEP_COUNT]" /></Template>
+                </Font>
+            </Text>
+        </PartText>
+
+        <!-- Outer ring -->
+        <PartDraw name="outer_ring" x="0" y="0" width="450" height="450">
+            <Ellipse x="4" y="4" width="442" height="442">
+                <Stroke color="#1C1D24" thickness="8" />
+            </Ellipse>
+        </PartDraw>
+
+    </Scene>
+</WatchFace>

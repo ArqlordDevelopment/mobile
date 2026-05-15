@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs>
+    <radialGradient id="dial" cx="45%" cy="38%" r="62%">
+      <stop offset="0" stop-color="#171717"/>
+      <stop offset="0.62" stop-color="#050505"/>
+      <stop offset="1" stop-color="#000"/>
+    </radialGradient>
+    <linearGradient id="steel" x1="0" x2="1">
+      <stop offset="0" stop-color="#777"/>
+      <stop offset="0.2" stop-color="#f2f2ee"/>
+      <stop offset="0.5" stop-color="#9a9a96"/>
+      <stop offset="0.8" stop-color="#fff"/>
+      <stop offset="1" stop-color="#686868"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" x2="1">
+      <stop offset="0" stop-color="#8f6720"/>
+      <stop offset="0.35" stop-color="#ffd681"/>
+      <stop offset="0.7" stop-color="#c89b3c"/>
+      <stop offset="1" stop-color="#78551b"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="#020202"/>
+  <circle cx="400" cy="400" r="386" fill="url(#steel)"/>
+  <circle cx="400" cy="400" r="360" fill="#030303" stroke="#cfd0ce" stroke-width="10"/>
+  <circle cx="400" cy="400" r="289" fill="url(#dial)" stroke="#cfd0ce" stroke-width="8"/>
+  <circle cx="400" cy="400" r="271" fill="none" stroke="#303030" stroke-width="8"/>
+  <g stroke="#dadbd8" stroke-width="4" stroke-linecap="round">
+    <script type="application/ecmascript"><![CDATA[]]></script>
+  </g>
+  <g fill="#e5e5df" stroke="#888" stroke-width="3">
+    <path d="M400 129 L431 193 L369 193 Z"/>
+    <rect x="384" y="588" width="32" height="74" rx="4"/>
+    <rect x="125" y="384" width="76" height="32" rx="4"/>
+    <circle cx="538" cy="162" r="25"/>
+    <circle cx="638" cy="262" r="25"/>
+    <circle cx="638" cy="538" r="25"/>
+    <circle cx="538" cy="638" r="25"/>
+    <circle cx="262" cy="638" r="25"/>
+    <circle cx="162" cy="538" r="25"/>
+    <circle cx="162" cy="262" r="25"/>
+    <circle cx="262" cy="162" r="25"/>
+  </g>
+  <g fill="#d7d7d1" font-family="Georgia, serif" text-anchor="middle">
+    <text x="400" y="73" font-size="31">▲</text>
+    <text x="581" y="132" font-size="38" transform="rotate(36 581 132)">10</text>
+    <text x="693" y="288" font-size="38" transform="rotate(72 693 288)">20</text>
+    <text x="400" y="748" font-size="38" transform="rotate(180 400 748)">30</text>
+    <text x="107" y="606" font-size="38" transform="rotate(234 107 606)">40</text>
+    <text x="107" y="194" font-size="38" transform="rotate(306 107 194)">50</text>
+  </g>
+  <g fill="url(#gold)">
+    <path d="M400 238 L421 258 L454 252 L440 281 L469 301 L434 310 L443 344 L413 328 L400 362 L387 328 L357 344 L366 310 L331 301 L360 281 L346 252 L379 258 Z"/>
+    <path d="M371 293 Q388 255 400 286 Q412 255 429 293 Q423 332 400 341 Q377 332 371 293 Z" fill="#050505"/>
+  </g>
+  <text x="400" y="385" fill="#eee" font-size="40" font-family="Georgia, serif" text-anchor="middle" letter-spacing="8">LIONOR</text>
+  <text x="400" y="522" fill="#d4ad5d" font-size="31" font-family="Georgia, serif" text-anchor="middle" letter-spacing="3">ROYAL DIVER</text>
+  <text x="400" y="558" fill="#eee" font-size="28" font-family="Arial, sans-serif" text-anchor="middle">300m</text>
+  <text x="400" y="588" fill="#eee" font-size="20" font-family="Arial, sans-serif" text-anchor="middle">AUTOMATIC CHRONOMETER</text>
+  <text x="400" y="679" fill="#eee" font-size="18" font-family="Arial, sans-serif" text-anchor="middle">SWISS | MADE</text>
+  <g>
+    <rect x="570" y="360" width="102" height="74" rx="13" fill="url(#steel)"/>
+    <rect x="588" y="374" width="66" height="46" rx="5" fill="#f5f5f0"/>
+    <text x="621" y="410" fill="#111" font-size="44" font-family="Arial, sans-serif" text-anchor="middle">28</text>
+  </g>
+  <g stroke="url(#steel)" stroke-linecap="round" fill="none">
+    <path d="M400 400 L286 347" stroke-width="36"/>
+    <path d="M400 400 L594 296" stroke-width="29"/>
+  </g>
+  <g stroke="#f5f5ee" stroke-linecap="round" fill="none">
+    <path d="M400 400 L400 144" stroke-width="5"/>
+  </g>
+  <circle cx="400" cy="400" r="28" fill="url(#steel)" stroke="#222" stroke-width="3"/>
+  <circle cx="400" cy="400" r="9" fill="#111" stroke="#eee" stroke-width="2"/>
+</svg>

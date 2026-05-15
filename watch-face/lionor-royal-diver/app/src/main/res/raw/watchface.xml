@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Lionor Royal Diver — Watch Face Format (WFF)
+  Canvas: 450x450 | center: (225,225)
+
+  This version fixes the funky hand rendering by replacing the processed AI crops
+  with clean transparent PNG hand assets made for WFF rotation.
+
+  Dial: 440x440 at x=5 y=5 = 97.8% canvas for a sharper, fuller render.
+  Hand assets are true transparent PNGs in drawable-nodpi.
+
+  Pivot math:
+    Hour asset   320x900  pivotY=0.840  rendered 42x120  => y 124, pivot y 225
+    Minute asset 220x1100 pivotY=0.900  rendered 28x152  => y 88, pivot y 225
+    Second asset 120x1000 pivotY=0.560  rendered 22x230  => y 96, pivot y 225
+-->
+<WatchFace width="450" height="450" clipShape="CIRCLE">
+    <Scene>
+
+        <!-- 1. Solid black background -->
+        <PartImage x="0" y="0" width="450" height="450">
+            <Image resource="black_background" />
+        </PartImage>
+
+        <!-- 2. Dial base: nearly full-size to reduce resampling softness -->
+        <Group name="dial_layer" x="5" y="5" width="440" height="440">
+            <Variant mode="AMBIENT" target="alpha" value="145" />
+            <PartImage x="0" y="0" width="440" height="440">
+                <Image resource="lionor_dial_base" />
+            </PartImage>
+        </Group>
+
+        <!-- 3. Live date: ivory blank and black day number sit under the cyclops lens -->
+        <PartImage name="date_blank" x="320" y="203" width="44" height="35">
+            <Image resource="date_blank" />
+        </PartImage>
+
+        <PartText name="date_number" x="320" y="203" width="44" height="35">
+            <Text align="CENTER">
+                <Font family="SYNC_TO_DEVICE" size="22" weight="BOLD" color="#222222">
+                    <Template>
+                        <![CDATA[%d]]>
+                        <Parameter expression="[DAY]" />
+                    </Template>
+                </Font>
+            </Text>
+        </PartText>
+
+        <!-- 4. Analog hands: classic diver proportions: hour reaches markers, minute reaches minute track -->
+        <AnalogClock name="lionor_hands" x="0" y="0" width="450" height="450">
+
+            <!-- Hour hand: slim gray sword hand, no Mercedes circle -->
+            <HourHand resource="lionor_hour_hand"
+                x="209" y="113" width="32" height="125"
+                pivotX="0.5" pivotY="0.900" />
+
+            <!-- Minute hand: larger baton/sword hand for better reach -->
+            <MinuteHand resource="lionor_minute_hand"
+                x="211" y="83" width="28" height="158"
+                pivotX="0.5" pivotY="0.900" />
+
+            <!-- Second hand: brighter and larger so it stays visible; hidden in ambient -->
+            <SecondHand resource="lionor_second_hand"
+                x="214" y="92" width="22" height="238"
+                pivotX="0.5" pivotY="0.560">
+                <Variant mode="AMBIENT" target="alpha" value="0" />
+            </SecondHand>
+
+        </AnalogClock>
+
+        <!-- 5. Center cap covers the hand pivots without becoming a white square -->
+        <PartImage name="center_cap" x="211" y="211" width="28" height="28">
+            <Image resource="lionor_center_cap" />
+        </PartImage>
+
+    </Scene>
+</WatchFace>
