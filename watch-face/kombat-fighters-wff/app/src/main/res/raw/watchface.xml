@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WatchFace width="450" height="450" clipShape="CIRCLE">
+    <UserConfigurations>
+        <ListConfiguration id="face_style" displayName="Style" defaultValue="2">
+            <ListOption id="1" displayName="Pink Stage" />
+            <ListOption id="2" displayName="Neon Night" />
+            <ListOption id="3" displayName="Sunset Gold" />
+            <ListOption id="4" displayName="Noir Spotlight" />
+            <ListOption id="5" displayName="Scorpion" />
+            <ListOption id="6" displayName="Sub-Zero" />
+            <ListOption id="7" displayName="Johnny Cage" />
+        </ListConfiguration>
+    </UserConfigurations>
+    <Scene>
+        <!-- Style-specific layers wrapped in Group > ListConfiguration > ListOption > Group -->
+        <Group name="style_content" x="0" y="0" width="450" height="450">
+            <ListConfiguration id="face_style">
+                <ListOption id="1">
+                    <Group name="style1" x="0" y="0" width="450" height="450">
+                        <PartImage name="bg_face01" x="0" y="0" width="450" height="450"><Image resource="kombat_fighter_face_01_arena" /></PartImage>
+                        <PartImage x="0" y="0" width="450" height="450"><Image resource="bottom_gradient" /></PartImage>
+                        <PartImage x="0" y="0" width="450" height="450"><Image resource="overlay_gradient" /></PartImage>
+                        <PartText name="time_shadow_f01" x="79" y="273" width="300" height="100"><Text align="CENTER"><Font family="earthrealm" size="100" weight="NORMAL" color="#000000"><Template><![CDATA[%02d:%02d]]><Parameter expression="[HOUR_1_12]" /><Parameter expression="[MINUTE]" /></Template></Font></Text></PartText>
+                        <PartText name="date_shadow_f01" x="79" y="361" width="300" height="32"><Text align="CENTER"><Font family="oswald_regular" size="24" weight="NORMAL" color="#000000"><Template><![CDATA[%S %S %d]]><Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[MONTH_S]" /><Parameter expression="[DAY]" /></Template></Font></Text></PartText>
+                        <PartText name="time_text_f01" x="75" y="269" width="300" height="100"><Text align="CENTER"><Font family="earthrealm" size="100" weight="NORMAL" color="#FF7733"><Template><![CDATA[%02d:%02d]]><Parameter expression="[HOUR_1_12]" /><Parameter expression="[MINUTE]" /></Template></Font></Text></PartText>
+                        <PartText name="date_text_f01" x="75" y="357" width="300" height="32"><Text align="CENTER"><Font family="oswald_regular" size="24" weight="NORMAL" color="#FF7733"><Template><![CDATA[%S %S %d]]><Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[MONTH_S]" /><Parameter expression="[DAY]" /></Template></Font></Text></PartText>
+                        <PartDraw name="battery_badge_f01" x="354" y="151" width="70" height="102"><RoundRectangle x="0" y="0" width="70" height="102" cornerRadiusX="30" cornerRadiusY="38"><Fill color="#A0392A40" /></RoundRectangle></PartDraw>
+                        <PartDraw name="steps_badge_f01" x="26" y="151" width="70" height="102"><RoundRectangle x="0" y="0" width="70" height="102" cornerRadiusX="30" cornerRadiusY="38"><Fill color="#A0392A40" /></RoundRectangle></PartDraw>
+                        <PartImage name="steps_icon_f01" x="43" y="163" width="50" height="50"><Image resource="icon_steps_kombat_f01" /></PartImage>
+                        <PartText name="steps_value_shadow_f01" x="29" y="207" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#3D1100"><Template><![CDATA[%d]]><Parameter expression="[STEP_COUNT]" /></Template></Font></Text></PartText>
+                        <PartText name="steps_value_f01" x="26" y="205" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#FF7733"><Template><![CDATA[%d]]><Parameter expression="[STEP_COUNT]" /></Template></Font></Text></PartText>
+                        <PartText name="steps_label_f01" x="26" y="230" width="70" height="18"><Text align="CENTER"><Font family="montserrat_medium" size="10" weight="NORMAL" color="#CC5522">STEPS</Font></Text></PartText>
+<PartText name="battery_value_shadow_f01" x="357" y="207" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#3D1100"><Template><![CDATA[%d%%]]><Parameter expression="[BATTERY_PERCENT]" /></Template></Font></Text></PartText>
+                        <PartText name="battery_value_f01" x="354" y="205" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#FF7733"><Template><![CDATA[%d%%]]><Parameter expression="[BATTERY_PERCENT]" /></Template></Font></Text></PartText>
+                        <PartText name="battery_label_f01" x="354" y="230" width="70" height="18"><Text align="CENTER"><Font family="montserrat_medium" size="10" weight="NORMAL" color="#CC5522">BATTERY</Font></Text></PartText>
+                        <PartImage name="battery_icon_f01" x="364" y="161" width="50" height="50"><Image resource="icon_battery_kombat_f01" /></PartImage>
+                    </Group>
+                </ListOption>
+                <ListOption id="2">
+                    <Group name="style2" x="0" y="0" width="450" height="450">
+                        <PartImage name="bg_face02" x="0" y="0" width="450" height="450"><Image resource="kombat_fighter_face_02_neon" /></PartImage>
+                        <PartImage x="0" y="0" width="450" height="450"><Image resource="bottom_gradient" /></PartImage>
+                        <PartImage x="0" y="0" width="450" height="450"><Image resource="overlay_gradient" /></PartImage>
+                        <PartText name="time_shadow_f02" x="81" y="275" width="300" height="100"><Text align="CENTER"><Font family="earthrealm" size="100" weight="NORMAL" color="#000000"><Template><![CDATA[%02d:%02d]]><Parameter expression="[HOUR_1_12]" /><Parameter expression="[MINUTE]" /></Template></Font></Text></PartText>
+                        <PartText name="date_shadow_f02" x="81" y="363" width="300" height="32"><Text align="CENTER"><Font family="oswald_regular" size="24" weight="NORMAL" color="#000000"><Template><![CDATA[%S %S %d]]><Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[MONTH_S]" /><Parameter expression="[DAY]" /></Template></Font></Text></PartText>
+                        <PartText name="time_text_f02" x="75" y="269" width="300" height="100"><Text align="CENTER"><Font family="earthrealm" size="100" weight="NORMAL" color="#FFFFFF"><Template><![CDATA[%02d:%02d]]><Parameter expression="[HOUR_1_12]" /><Parameter expression="[MINUTE]" /></Template></Font></Text></PartText>
+                        <PartText name="date_text_f02" x="75" y="357" width="300" height="32"><Text align="CENTER"><Font family="oswald_regular" size="24" weight="NORMAL" color="#FFFFFF"><Template><![CDATA[%S %S %d]]><Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[MONTH_S]" /><Parameter expression="[DAY]" /></Template></Font></Text></PartText>
+                        <PartDraw name="battery_badge_f02" x="354" y="151" width="70" height="102"><RoundRectangle x="0" y="0" width="70" height="102" cornerRadiusX="30" cornerRadiusY="38"><Fill color="#A0392A40" /></RoundRectangle></PartDraw>
+                        <PartDraw name="steps_badge_f02" x="26" y="151" width="70" height="102"><RoundRectangle x="0" y="0" width="70" height="102" cornerRadiusX="30" cornerRadiusY="38"><Fill color="#A0392A40" /></RoundRectangle></PartDraw>
+                        <PartImage name="steps_icon_f02" x="43" y="163" width="50" height="50"><Image resource="icon_steps_kombat_f02" /></PartImage>
+                        <PartText name="steps_value_shadow_f02" x="29" y="207" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#001A3D"><Template><![CDATA[%d]]><Parameter expression="[STEP_COUNT]" /></Template></Font></Text></PartText>
+                        <PartText name="steps_value_f02" x="26" y="205" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#FFFFFF"><Template><![CDATA[%d]]><Parameter expression="[STEP_COUNT]" /></Template></Font></Text></PartText>
+                        <PartText name="steps_label_f02" x="26" y="230" width="70" height="18"><Text align="CENTER"><Font family="montserrat_medium" size="10" weight="NORMAL" color="#FFFFFF">STEPS</Font></Text></PartText>
+<PartText name="battery_value_shadow_f02" x="357" y="207" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#001A3D"><Template><![CDATA[%d%%]]><Parameter expression="[BATTERY_PERCENT]" /></Template></Font></Text></PartText>
+                        <PartText name="battery_value_f02" x="354" y="205" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#FFFFFF"><Template><![CDATA[%d%%]]><Parameter expression="[BATTERY_PERCENT]" /></Template></Font></Text></PartText>
+                        <PartText name="battery_label_f02" x="354" y="230" width="70" height="18"><Text align="CENTER"><Font family="montserrat_medium" size="10" weight="NORMAL" color="#FFFFFF">BATTERY</Font></Text></PartText>
+                        <PartImage name="battery_icon_f02" x="364" y="161" width="50" height="50"><Image resource="icon_battery_kombat_f02" /></PartImage>
+                    </Group>
+                </ListOption>
+                <ListOption id="3">
+                    <Group name="style3" x="0" y="0" width="450" height="450">
+                        <PartImage name="bg_face03" x="0" y="0" width="450" height="450"><Image resource="kombat_fighter_face_03_gold" /></PartImage>
+                        <PartImage x="0" y="0" width="450" height="450"><Image resource="bottom_gradient" /></PartImage>
+                        <PartImage x="0" y="0" width="450" height="450"><Image resource="overlay_gradient" /></PartImage>
+                        <PartText name="time_shadow_f03" x="79" y="273" width="300" height="100"><Text align="CENTER"><Font family="earthrealm" size="100" weight="NORMAL" color="#000000"><Template><![CDATA[%02d:%02d]]><Parameter expression="[HOUR_1_12]" /><Parameter expression="[MINUTE]" /></Template></Font></Text></PartText>
+                        <PartText name="date_shadow_f03" x="79" y="361" width="300" height="32"><Text align="CENTER"><Font family="oswald_regular" size="24" weight="NORMAL" color="#000000"><Template><![CDATA[%S %S %d]]><Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[MONTH_S]" /><Parameter expression="[DAY]" /></Template></Font></Text></PartText>
+                        <PartText name="time_text_f03" x="75" y="269" width="300" height="100"><Text align="CENTER"><Font family="earthrealm" size="100" weight="NORMAL" color="#FFD700"><Template><![CDATA[%02d:%02d]]><Parameter expression="[HOUR_1_12]" /><Parameter expression="[MINUTE]" /></Template></Font></Text></PartText>
+                        <PartText name="date_text_f03" x="75" y="357" width="300" height="32"><Text align="CENTER"><Font family="oswald_regular" size="24" weight="NORMAL" color="#FFD700"><Template><![CDATA[%S %S %d]]><Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[MONTH_S]" /><Parameter expression="[DAY]" /></Template></Font></Text></PartText>
+                        <PartDraw name="battery_badge_f03" x="354" y="151" width="70" height="102"><RoundRectangle x="0" y="0" width="70" height="102" cornerRadiusX="30" cornerRadiusY="38"><Fill color="#A0392A40" /></RoundRectangle></PartDraw>
+                        <PartDraw name="steps_badge_f03" x="26" y="151" width="70" height="102"><RoundRectangle x="0" y="0" width="70" height="102" cornerRadiusX="30" cornerRadiusY="38"><Fill color="#A0392A40" /></RoundRectangle></PartDraw>
+                        <PartImage name="steps_icon_f03" x="43" y="163" width="50" height="50"><Image resource="icon_steps_kombat_f03" /></PartImage>
+                        <PartText name="steps_value_shadow_f03" x="29" y="207" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#3D2B00"><Template><![CDATA[%d]]><Parameter expression="[STEP_COUNT]" /></Template></Font></Text></PartText>
+                        <PartText name="steps_value_f03" x="26" y="205" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#FFD700"><Template><![CDATA[%d]]><Parameter expression="[STEP_COUNT]" /></Template></Font></Text></PartText>
+                        <PartText name="steps_label_f03" x="26" y="230" width="70" height="18"><Text align="CENTER"><Font family="montserrat_medium" size="10" weight="NORMAL" color="#CC9900">STEPS</Font></Text></PartText>
+<PartText name="battery_value_shadow_f03" x="357" y="207" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#3D2B00"><Template><![CDATA[%d%%]]><Parameter expression="[BATTERY_PERCENT]" /></Template></Font></Text></PartText>
+                        <PartText name="battery_value_f03" x="354" y="205" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#FFD700"><Template><![CDATA[%d%%]]><Parameter expression="[BATTERY_PERCENT]" /></Template></Font></Text></PartText>
+                        <PartText name="battery_label_f03" x="354" y="230" width="70" height="18"><Text align="CENTER"><Font family="montserrat_medium" size="10" weight="NORMAL" color="#CC9900">BATTERY</Font></Text></PartText>
+                        <PartImage name="battery_icon_f03" x="364" y="161" width="50" height="50"><Image resource="icon_battery_kombat_f03" /></PartImage>
+                    </Group>
+                </ListOption>
+                <ListOption id="4">
+                    <Group name="style4" x="0" y="0" width="450" height="450">
+                        <PartImage name="bg_face04" x="0" y="0" width="450" height="450"><Image resource="kombat_fighter_face_04_shadow" /></PartImage>
+                        <PartImage x="0" y="0" width="450" height="450"><Image resource="bottom_gradient" /></PartImage>
+                        <PartImage x="0" y="0" width="450" height="450"><Image resource="overlay_gradient" /></PartImage>
+                        <PartText name="time_shadow_f04" x="79" y="273" width="300" height="100"><Text align="CENTER"><Font family="earthrealm" size="100" weight="NORMAL" color="#000000"><Template><![CDATA[%02d:%02d]]><Parameter expression="[HOUR_1_12]" /><Parameter expression="[MINUTE]" /></Template></Font></Text></PartText>
+                        <PartText name="date_shadow_f04" x="79" y="361" width="300" height="32"><Text align="CENTER"><Font family="oswald_regular" size="24" weight="NORMAL" color="#000000"><Template><![CDATA[%S %S %d]]><Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[MONTH_S]" /><Parameter expression="[DAY]" /></Template></Font></Text></PartText>
+                        <PartText name="time_text_f04" x="75" y="269" width="300" height="100"><Text align="CENTER"><Font family="earthrealm" size="100" weight="NORMAL" color="#CCCCCC"><Template><![CDATA[%02d:%02d]]><Parameter expression="[HOUR_1_12]" /><Parameter expression="[MINUTE]" /></Template></Font></Text></PartText>
+                        <PartText name="date_text_f04" x="75" y="357" width="300" height="32"><Text align="CENTER"><Font family="oswald_regular" size="24" weight="NORMAL" color="#CCCCCC"><Template><![CDATA[%S %S %d]]><Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[MONTH_S]" /><Parameter expression="[DAY]" /></Template></Font></Text></PartText>
+                        <PartDraw name="battery_badge_f04" x="354" y="151" width="70" height="102"><RoundRectangle x="0" y="0" width="70" height="102" cornerRadiusX="30" cornerRadiusY="38"><Fill color="#AA1C1005" /></RoundRectangle></PartDraw>
+                        <PartDraw name="steps_badge_f04" x="26" y="151" width="70" height="102"><RoundRectangle x="0" y="0" width="70" height="102" cornerRadiusX="30" cornerRadiusY="38"><Fill color="#AA1C1005" /></RoundRectangle></PartDraw>
+                        <PartImage name="steps_icon_f04" x="43" y="163" width="50" height="50"><Image resource="icon_steps_kombat_f04" /></PartImage>
+                        <PartText name="steps_value_shadow_f04" x="29" y="207" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#1A1A1A"><Template><![CDATA[%d]]><Parameter expression="[STEP_COUNT]" /></Template></Font></Text></PartText>
+                        <PartText name="steps_value_f04" x="26" y="205" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#CCCCCC"><Template><![CDATA[%d]]><Parameter expression="[STEP_COUNT]" /></Template></Font></Text></PartText>
+                        <PartText name="steps_label_f04" x="26" y="230" width="70" height="18"><Text align="CENTER"><Font family="montserrat_medium" size="10" weight="NORMAL" color="#999999">STEPS</Font></Text></PartText>
+<PartText name="battery_value_shadow_f04" x="357" y="207" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#1A1A1A"><Template><![CDATA[%d%%]]><Parameter expression="[BATTERY_PERCENT]" /></Template></Font></Text></PartText>
+                        <PartText name="battery_value_f04" x="354" y="205" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#CCCCCC"><Template><![CDATA[%d%%]]><Parameter expression="[BATTERY_PERCENT]" /></Template></Font></Text></PartText>
+                        <PartText name="battery_label_f04" x="354" y="230" width="70" height="18"><Text align="CENTER"><Font family="montserrat_medium" size="10" weight="NORMAL" color="#999999">BATTERY</Font></Text></PartText>
+                        <PartImage name="battery_icon_f04" x="364" y="161" width="50" height="50"><Image resource="icon_battery_kombat_f04" /></PartImage>
+                    </Group>
+                </ListOption>
+                <ListOption id="5">
+                    <Group name="style5" x="0" y="0" width="450" height="450">
+                        <PartImage name="bg_face05" x="0" y="0" width="450" height="450"><Image resource="kombat_fighter_face_05_scorpion" /></PartImage>
+                        <PartImage x="0" y="0" width="450" height="450"><Image resource="bottom_gradient" /></PartImage>
+                        <PartImage x="0" y="0" width="450" height="450"><Image resource="overlay_gradient" /></PartImage>
+                        <PartText name="time_shadow_f05" x="79" y="273" width="300" height="100"><Text align="CENTER"><Font family="earthrealm" size="100" weight="NORMAL" color="#000000"><Template><![CDATA[%02d:%02d]]><Parameter expression="[HOUR_1_12]" /><Parameter expression="[MINUTE]" /></Template></Font></Text></PartText>
+                        <PartText name="date_shadow_f05" x="79" y="361" width="300" height="32"><Text align="CENTER"><Font family="oswald_regular" size="24" weight="NORMAL" color="#000000"><Template><![CDATA[%S %S %d]]><Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[MONTH_S]" /><Parameter expression="[DAY]" /></Template></Font></Text></PartText>
+                        <PartText name="time_text_f05" x="75" y="269" width="300" height="100"><Text align="CENTER"><Font family="earthrealm" size="100" weight="NORMAL" color="#FFC800"><Template><![CDATA[%02d:%02d]]><Parameter expression="[HOUR_1_12]" /><Parameter expression="[MINUTE]" /></Template></Font></Text></PartText>
+                        <PartText name="date_text_f05" x="75" y="357" width="300" height="32"><Text align="CENTER"><Font family="oswald_regular" size="24" weight="NORMAL" color="#FFC800"><Template><![CDATA[%S %S %d]]><Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[MONTH_S]" /><Parameter expression="[DAY]" /></Template></Font></Text></PartText>
+                        <PartDraw name="battery_badge_f05" x="354" y="151" width="70" height="102"><RoundRectangle x="0" y="0" width="70" height="102" cornerRadiusX="30" cornerRadiusY="38"><Fill color="#A0392A40" /></RoundRectangle></PartDraw>
+                        <PartDraw name="steps_badge_f05" x="26" y="151" width="70" height="102"><RoundRectangle x="0" y="0" width="70" height="102" cornerRadiusX="30" cornerRadiusY="38"><Fill color="#A0392A40" /></RoundRectangle></PartDraw>
+                        <PartImage name="steps_icon_f05" x="43" y="163" width="50" height="50"><Image resource="icon_steps_kombat_f05" /></PartImage>
+                        <PartText name="steps_value_shadow_f05" x="29" y="207" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#3D3000"><Template><![CDATA[%d]]><Parameter expression="[STEP_COUNT]" /></Template></Font></Text></PartText>
+                        <PartText name="steps_value_f05" x="26" y="205" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#FFC800"><Template><![CDATA[%d]]><Parameter expression="[STEP_COUNT]" /></Template></Font></Text></PartText>
+                        <PartText name="steps_label_f05" x="26" y="230" width="70" height="18"><Text align="CENTER"><Font family="montserrat_medium" size="10" weight="NORMAL" color="#CC9900">STEPS</Font></Text></PartText>
+                        <PartText name="battery_value_shadow_f05" x="357" y="207" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#3D3000"><Template><![CDATA[%d%%]]><Parameter expression="[BATTERY_PERCENT]" /></Template></Font></Text></PartText>
+                        <PartText name="battery_value_f05" x="354" y="205" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#FFC800"><Template><![CDATA[%d%%]]><Parameter expression="[BATTERY_PERCENT]" /></Template></Font></Text></PartText>
+                        <PartText name="battery_label_f05" x="354" y="230" width="70" height="18"><Text align="CENTER"><Font family="montserrat_medium" size="10" weight="NORMAL" color="#CC9900">BATTERY</Font></Text></PartText>
+                        <PartImage name="battery_icon_f05" x="364" y="161" width="50" height="50"><Image resource="icon_battery_kombat_f05" /></PartImage>
+                    </Group>
+                </ListOption>
+                <ListOption id="6">
+                    <Group name="style6" x="0" y="0" width="450" height="450">
+                        <PartImage name="bg_face06" x="0" y="0" width="450" height="450"><Image resource="kombat_fighter_face_06_subzero" /></PartImage>
+                        <PartImage x="0" y="0" width="450" height="450"><Image resource="bottom_gradient" /></PartImage>
+                        <PartImage x="0" y="0" width="450" height="450"><Image resource="overlay_gradient" /></PartImage>
+                        <PartText name="time_shadow_f06" x="81" y="275" width="300" height="100"><Text align="CENTER"><Font family="earthrealm" size="100" weight="NORMAL" color="#000000"><Template><![CDATA[%02d:%02d]]><Parameter expression="[HOUR_1_12]" /><Parameter expression="[MINUTE]" /></Template></Font></Text></PartText>
+                        <PartText name="date_shadow_f06" x="81" y="363" width="300" height="32"><Text align="CENTER"><Font family="oswald_regular" size="24" weight="NORMAL" color="#000000"><Template><![CDATA[%S %S %d]]><Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[MONTH_S]" /><Parameter expression="[DAY]" /></Template></Font></Text></PartText>
+                        <PartText name="time_text_f06" x="75" y="269" width="300" height="100"><Text align="CENTER"><Font family="earthrealm" size="100" weight="NORMAL" color="#FFFFFF"><Template><![CDATA[%02d:%02d]]><Parameter expression="[HOUR_1_12]" /><Parameter expression="[MINUTE]" /></Template></Font></Text></PartText>
+                        <PartText name="date_text_f06" x="75" y="357" width="300" height="32"><Text align="CENTER"><Font family="oswald_regular" size="24" weight="NORMAL" color="#FFFFFF"><Template><![CDATA[%S %S %d]]><Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[MONTH_S]" /><Parameter expression="[DAY]" /></Template></Font></Text></PartText>
+                        <PartDraw name="battery_badge_f06" x="354" y="151" width="70" height="102"><RoundRectangle x="0" y="0" width="70" height="102" cornerRadiusX="30" cornerRadiusY="38"><Fill color="#A0392A40" /></RoundRectangle></PartDraw>
+                        <PartDraw name="steps_badge_f06" x="26" y="151" width="70" height="102"><RoundRectangle x="0" y="0" width="70" height="102" cornerRadiusX="30" cornerRadiusY="38"><Fill color="#A0392A40" /></RoundRectangle></PartDraw>
+                        <PartImage name="steps_icon_f06" x="43" y="163" width="50" height="50"><Image resource="icon_steps_kombat_f06" /></PartImage>
+                        <PartText name="steps_value_shadow_f06" x="29" y="207" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#000000"><Template><![CDATA[%d]]><Parameter expression="[STEP_COUNT]" /></Template></Font></Text></PartText>
+                        <PartText name="steps_value_f06" x="26" y="205" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#FFFFFF"><Template><![CDATA[%d]]><Parameter expression="[STEP_COUNT]" /></Template></Font></Text></PartText>
+                        <PartText name="steps_label_f06" x="26" y="230" width="70" height="18"><Text align="CENTER"><Font family="montserrat_medium" size="10" weight="NORMAL" color="#FFFFFF">STEPS</Font></Text></PartText>
+                        <PartText name="battery_value_shadow_f06" x="357" y="207" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#000000"><Template><![CDATA[%d%%]]><Parameter expression="[BATTERY_PERCENT]" /></Template></Font></Text></PartText>
+                        <PartText name="battery_value_f06" x="354" y="205" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#FFFFFF"><Template><![CDATA[%d%%]]><Parameter expression="[BATTERY_PERCENT]" /></Template></Font></Text></PartText>
+                        <PartText name="battery_label_f06" x="354" y="230" width="70" height="18"><Text align="CENTER"><Font family="montserrat_medium" size="10" weight="NORMAL" color="#FFFFFF">BATTERY</Font></Text></PartText>
+                        <PartImage name="battery_icon_f06" x="364" y="161" width="50" height="50"><Image resource="icon_battery_kombat_f06" /></PartImage>
+                    </Group>
+                </ListOption>
+                <ListOption id="7">
+                    <Group name="style7" x="0" y="0" width="450" height="450">
+                        <PartImage name="bg_face07" x="0" y="0" width="450" height="450"><Image resource="kombat_fighter_face_07_johnnycage" /></PartImage>
+                        <PartImage x="0" y="0" width="450" height="450"><Image resource="bottom_gradient" /></PartImage>
+                        <PartImage x="0" y="0" width="450" height="450"><Image resource="overlay_gradient" /></PartImage>
+                        <PartText name="time_shadow_f07" x="79" y="273" width="300" height="100"><Text align="CENTER"><Font family="earthrealm" size="100" weight="NORMAL" color="#000000"><Template><![CDATA[%02d:%02d]]><Parameter expression="[HOUR_1_12]" /><Parameter expression="[MINUTE]" /></Template></Font></Text></PartText>
+                        <PartText name="date_shadow_f07" x="79" y="361" width="300" height="32"><Text align="CENTER"><Font family="oswald_regular" size="24" weight="NORMAL" color="#000000"><Template><![CDATA[%S %S %d]]><Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[MONTH_S]" /><Parameter expression="[DAY]" /></Template></Font></Text></PartText>
+                        <PartText name="time_text_f07" x="75" y="269" width="300" height="100"><Text align="CENTER"><Font family="earthrealm" size="100" weight="NORMAL" color="#32DC32"><Template><![CDATA[%02d:%02d]]><Parameter expression="[HOUR_1_12]" /><Parameter expression="[MINUTE]" /></Template></Font></Text></PartText>
+                        <PartText name="date_text_f07" x="75" y="357" width="300" height="32"><Text align="CENTER"><Font family="oswald_regular" size="24" weight="NORMAL" color="#32DC32"><Template><![CDATA[%S %S %d]]><Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[MONTH_S]" /><Parameter expression="[DAY]" /></Template></Font></Text></PartText>
+                        <PartDraw name="battery_badge_f07" x="354" y="151" width="70" height="102"><RoundRectangle x="0" y="0" width="70" height="102" cornerRadiusX="30" cornerRadiusY="38"><Fill color="#A0392A40" /></RoundRectangle></PartDraw>
+                        <PartDraw name="steps_badge_f07" x="26" y="151" width="70" height="102"><RoundRectangle x="0" y="0" width="70" height="102" cornerRadiusX="30" cornerRadiusY="38"><Fill color="#A0392A40" /></RoundRectangle></PartDraw>
+                        <PartImage name="steps_icon_f07" x="43" y="163" width="50" height="50"><Image resource="icon_steps_kombat_f07" /></PartImage>
+                        <PartText name="steps_value_shadow_f07" x="29" y="207" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#0A2200"><Template><![CDATA[%d]]><Parameter expression="[STEP_COUNT]" /></Template></Font></Text></PartText>
+                        <PartText name="steps_value_f07" x="26" y="205" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#32DC32"><Template><![CDATA[%d]]><Parameter expression="[STEP_COUNT]" /></Template></Font></Text></PartText>
+                        <PartText name="steps_label_f07" x="26" y="230" width="70" height="18"><Text align="CENTER"><Font family="montserrat_medium" size="10" weight="NORMAL" color="#22AA22">STEPS</Font></Text></PartText>
+                        <PartText name="battery_value_shadow_f07" x="357" y="207" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#0A2200"><Template><![CDATA[%d%%]]><Parameter expression="[BATTERY_PERCENT]" /></Template></Font></Text></PartText>
+                        <PartText name="battery_value_f07" x="354" y="205" width="70" height="24"><Text align="CENTER"><Font family="oswald_regular" size="16" weight="NORMAL" color="#32DC32"><Template><![CDATA[%d%%]]><Parameter expression="[BATTERY_PERCENT]" /></Template></Font></Text></PartText>
+                        <PartText name="battery_label_f07" x="354" y="230" width="70" height="18"><Text align="CENTER"><Font family="montserrat_medium" size="10" weight="NORMAL" color="#22AA22">BATTERY</Font></Text></PartText>
+                        <PartImage name="battery_icon_f07" x="364" y="161" width="50" height="50"><Image resource="icon_battery_kombat_f07" /></PartImage>
+                    </Group>
+                </ListOption>
+            </ListConfiguration>
+        </Group>
+
+        <!-- Common elements: edge stat badges and centered time/date -->
+
+        <PartDraw name="outer_ring" x="0" y="0" width="450" height="450">
+            <Ellipse x="4" y="4" width="442" height="442">
+                <Stroke color="#111116" thickness="8" />
+            </Ellipse>
+        </PartDraw>
+    </Scene>
+</WatchFace>

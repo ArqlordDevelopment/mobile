@@ -1,0 +1,162 @@
+Kombat fighters Digital WFF publishing checklist
+=====================================
+
+Run these checks before uploading a release to Google Play Console.
+
+Project
+-------
+Root:
+  C:\dev\mobile\watch-face\kombat-fighters-wff
+
+Package/applicationId:
+  com.bakerapps.kombatfighters
+
+Watch Face Format version:
+  1
+
+Minimum SDK:
+  34
+
+  This watch face uses WFF Weather data:
+    [WEATHER_CONDITION_TEMPERATURE_CELSIUS]
+
+  Google Play requires minSdk 34 or higher when Weather features are present.
+
+Important current note:
+  app\build.gradle.kts still uses placeholder release signing values:
+    storePassword = "ChangeMeBeforeRelease"
+    keyPassword   = "ChangeMeBeforeRelease"
+
+  Before the first Play upload, create or choose the real release/upload key,
+  update the signing config, and keep that keystore forever. Every later upload
+  for this Play app must use the same upload key unless Play Console resets it.
+
+
+1. Validate the source WFF XML
+------------------------------
+Use Google's official WFF validator. If it is not already built locally, build it:
+
+  cd C:\tmp\google-watchface\third_party\wff
+  $env:JAVA_HOME='C:\Program Files\Android\Android Studio1\jbr'
+  $env:Path="$env:JAVA_HOME\bin;$env:Path"
+  .\gradlew.bat :specification:validator:executable-jar
+
+Then validate this app's source XML:
+
+  cd C:\dev\mobile\watch-face\kombat-fighters-wff
+  & 'C:\Program Files\Android\Android Studio1\jbr\bin\java.exe' -jar C:\tmp\google-watchface\third_party\wff\specification\validator\build\libs\wff-validator.jar 1 app\src\main\res\raw\watchface.xml
+
+Expected result:
+  PASSED : app\src\main\res\raw\watchface.xml is valid against watch face format version #1
+
+Common validator errors seen in nearby projects:
+  - WFF v1 Text align must be START, CENTER, or END. Do not use LEFT or RIGHT.
+  - Some elements do not allow a name attribute. Example: AnalogClock name="..." failed in Lionor.
+  - XML must be UTF-8. Be careful when using PowerShell rewrites because they can introduce encoding issues.
+
+
+2. Build the release AAB
+------------------------
+Always bump versionCode before uploading a new bundle. Rejected uploads can still consume a version code.
+
+  cd C:\dev\mobile\watch-face\kombat-fighters-wff
+  $env:JAVA_HOME='C:\Program Files\Android\Android Studio1\jbr'
+  $env:Path="$env:JAVA_HOME\bin;$env:Path"
+  .\gradlew.bat :app:bundleRelease
+
+Output:
+  app\build\outputs\bundle\release\app-release.aab
+
+This project has a post-build task that strips dex files from the AAB. Keep it.
+Google Play rejects WFF bundles that contain dex files.
+
+
+3. Validate the XML inside the built AAB
+----------------------------------------
+This catches cases where the source passes but the uploaded artifact is stale.
+
+  Add-Type -AssemblyName System.IO.Compression.FileSystem
+  $out='C:\tmp\kombat-fighters-aab-watchface.xml'
+  $zip=[IO.Compression.ZipFile]::OpenRead('app\build\outputs\bundle\release\app-release.aab')
+  $entry=$zip.GetEntry('base/res/raw/watchface.xml')
+  [IO.Compression.ZipFileExtensions]::ExtractToFile($entry, $out, $true)
+  $zip.Dispose()
+  & 'C:\Program Files\Android\Android Studio1\jbr\bin\java.exe' -jar C:\tmp\google-watchface\third_party\wff\specification\validator\build\libs\wff-validator.jar 1 $out
+
+Expected result:
+  PASSED : C:\tmp\kombat-fighters-aab-watchface.xml is valid against watch face format version #1
+
+
+4. Confirm the AAB has no dex files
+-----------------------------------
+  Add-Type -AssemblyName System.IO.Compression.FileSystem
+  [IO.Compression.ZipFile]::OpenRead('app\build\outputs\bundle\release\app-release.aab').Entries | Where-Object { $_.FullName -like '*.dex' } | Measure-Object | Select-Object Count
+
+Expected result:
+  Count = 0
+
+
+5. Confirm the signing certificate
+----------------------------------
+Check the uploaded AAB fingerprint and compare it to Play Console's expected upload key.
+
+  & 'C:\Program Files\Android\Android Studio1\jbr\bin\keytool.exe' -printcert -jarfile app\build\outputs\bundle\release\app-release.aab
+
+Record the expected SHA1 here once Play Console accepts the first upload:
+  SHA1: TODO
+
+If Play says "signed with the wrong key", do not create a new key blindly. Find the keystore whose SHA1 matches Play's expected fingerprint and rebuild with that.
+
+
+6. Emulator smoke test
+----------------------
+Build an installable release APK from the same source:
+
+  .\gradlew.bat :app:assembleRelease
+
+Install it:
+
+  & "$env:LOCALAPPDATA\Android\Sdk\platform-tools\adb.exe" -s emulator-5554 install --no-streaming -r "C:\dev\mobile\watch-face\kombat-fighters-wff\app\build\outputs\apk\release\app-release.apk"
+
+Set it as the active watch face:
+
+  & "$env:LOCALAPPDATA\Android\Sdk\platform-tools\adb.exe" -s emulator-5554 shell am broadcast -a com.google.android.wearable.app.DEBUG_SURFACE --es operation set-watchface --es watchFaceId com.bakerapps.kombatfighters
+
+Capture a screenshot:
+
+  & "$env:LOCALAPPDATA\Android\Sdk\platform-tools\adb.exe" -s emulator-5554 shell screencap -p /sdcard/kombat_fighters_watchface_check.png
+  & "$env:LOCALAPPDATA\Android\Sdk\platform-tools\adb.exe" -s emulator-5554 pull /sdcard/kombat_fighters_watchface_check.png "C:\Users\rocky\Documents\Codex\2026-05-15\im-doing-a-watch-face-app\kombat_fighters_watchface_check.png"
+
+
+7. Test the four face variants
+------------------------------
+This project supports four variants through switch_face.py:
+
+  python switch_face.py 1
+  python switch_face.py 2
+  python switch_face.py 3
+  python switch_face.py 4
+
+For each one, rebuild/install/set/capture like the emulator smoke test above.
+After testing, switch back to the intended default face and rebuild the final AAB.
+
+
+8. Make a clearly named upload copy
+-----------------------------------
+Avoid uploading the wrong app-release.aab from a neighboring watch-face project.
+
+Example:
+
+  New-Item -ItemType Directory -Force store
+  Copy-Item -LiteralPath app\build\outputs\bundle\release\app-release.aab -Destination store\kombat-fighters-vVERSION-wff-valid-upload.aab -Force
+
+Before uploading the named copy, re-run:
+  - WFF validation on the XML extracted from that exact AAB
+  - dex count check
+  - keytool -printcert -jarfile on that exact AAB
+
+
+Play Console final check
+------------------------
+If the bundle appears under Latest app bundles with the new versionCode and Active status,
+and Publishing overview shows "Send changes for review" without key or WFF errors, it is ready to send for review.
